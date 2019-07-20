@@ -1,0 +1,156 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{vdr}[2019/07/19 Librairie pour dessiner le ventilateur VDR-4]
+
+\RequirePackage{tikz}
+\usetikzlibrary{shapes}
+
+\tikzset{
+	aknob/.pic={
+		\begin{scope}[scale=0.4]
+		\draw [pic actions](0,0) circle [radius=1.35cm];
+		\draw (0,0) circle [radius=.65cm];
+
+		\draw (0,1.17) -- ++(-60:.35) -- ++(-180:.35) -- ++(60:.35);
+
+		\foreach \h in {1,...,11}{
+			\draw (90 - \h*30:1) node [rotate=-30*\h, transform shape] {\h};
+		}
+
+		\node [transform shape]at (0:0) {\huge \tikzpictext};
+		\end{scope}
+	}
+}
+
+\tikzset{
+	screw/.pic={
+		\node [
+			transform shape, 
+			draw, 
+			circle, 
+			inner sep=0.02em] {+};
+	}
+}
+
+\tikzset{
+	master/.pic={
+		\node [
+			draw, 
+			shape=star, 
+			star point height=0.6mm, 
+			star points=30, 
+			minimum width=1cm] {};
+		\node [
+			draw, 
+			shape=regular polygon, 
+			regular polygon sides=6,
+			minimum width=1.3cm] {};
+		}
+}
+
+\tikzset{
+	pushbutton/.pic={
+		\draw circle [radius=1.8mm];
+		\node [
+			draw, 
+			shape=regular polygon, 
+			regular polygon sides=6,
+			minimum width=5mm] {};
+		}
+}
+
+\tikzset{
+	toggle/.pic={
+		\draw circle [radius=1.8mm];
+		\node [
+			draw, 
+			shape=regular polygon, 
+			regular polygon sides=6,
+			minimum width=5mm] {};
+		\draw [fill=white] (0,0) -- (-1mm, 0) -- (-1.5mm, -5mm) -- (1.5mm, -5mm) -- (1mm, 0) -- (0, 0);
+		}
+}
+
+\tikzset{
+	connector/.pic={
+		\node [
+			draw, 
+			shape=regular polygon, 
+			regular polygon sides=6,
+			minimum width=0.6cm] {};
+		\draw (0,0) circle [radius=1.9mm];
+		\draw (0,0) circle [radius=1.4mm];
+		}
+}
+
+\tikzset{
+	vdr/.pic={
+
+		%%%%%%%%%%%%%%
+		% Dimensions %
+		%%%%%%%%%%%%%%
+
+		\def\panelWidth{14cm}
+		\def\panelHeight{7cm}
+		\def\sDist{3mm}
+		\def\nDist{20mm}
+		\def\cSpace{7.5mm}
+
+		%%%%%%%%%%%%%%%
+		% Coordinates %
+		%%%%%%%%%%%%%%%
+
+		\coordinate (-NO) at (0,0);
+		\coordinate (-NE) at (\panelWidth,0);
+		\coordinate (-SE) at (\panelWidth, -\panelHeight);
+		\coordinate (-SO) at (0,-\panelHeight);
+
+		\path (-NO) ++(\sDist, -\sDist) coordinate (-SNO);
+		\path (-NE) ++(-\sDist, -\sDist) coordinate (-SNE);
+		\path (-SO) ++(\sDist, \sDist) coordinate (-SSO);
+		\path (-SE) ++(-\sDist, \sDist) coordinate (-SSE);
+		\path (-SNO) ++(0.5 * \panelWidth - \sDist, 0) coordinate (-SN);
+		\path (-SSO) ++(0.5 * \panelWidth - \sDist, 0) coordinate (-SS);
+
+		\path (-NO) ++(\nDist, -\nDist) coordinate (-F) 
+		foreach \x in {I, E, O, D} {
+			++(\nDist, 0) coordinate (-\x)
+		}
+			++(\nDist, 0.5) coordinate (-C)
+		;
+
+		\path (-SO) ++(\nDist, \nDist) coordinate (-A); 
+		\path (-A) ++(\nDist, 0) coordinate (-M); 
+		\path (-M) ++(\nDist, 3mm) coordinate (-N); 
+		\path (-N) ++(0.35 * \nDist, -6mm) coordinate (-P); 
+		\path (-N) ++(-0.35 * \nDist, -6mm) coordinate (-R); 
+		\path (-A) ++(3 * \nDist, 0) coordinate (-i); 
+		\path (-i) ++(\nDist, 0) coordinate (-e); 
+
+		\path (-C) ++(0, -\nDist) coordinate (-C1) 
+		foreach \x in {2, 3, 4} {
+			++(0, -\cSpace) coordinate (-C\x)
+		};
+
+%%%%%%%%%%%
+% Drawing %
+%%%%%%%%%%%
+
+		\draw [double] (-NO) rectangle (-SE);
+
+		\foreach \x in {SNO, SNE, SSO, SSE, SN, SS} {
+			\draw (-\x) pic [transform shape, scale=0.5] {screw};
+		}
+
+		\foreach \x in {F, I, E, O, D, C, A, i, e} {
+			\draw (-\x) pic [transform shape] {aknob};
+		}
+
+		\draw (-M) pic [transform shape] {master};
+
+		\foreach \x in {P, R} {
+			\draw (-\x) pic [transform shape] {pushbutton};
+		}
+
+		\draw (-N) pic [transform shape] {toggle};
+	}
+}
