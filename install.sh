@@ -1,8 +1,10 @@
 #!/bin/bash
 
 echo "Instalation de vdr.sty dans votre dossier texmf."
+
 dossiercibleinst=~/texmf/tex/latex/vdr
 echo $dossiercibleinst
+
 if test -d $dossiercibleinst
 then
 	echo "Le dossier $dossiercibleinst existe déjà"
@@ -17,7 +19,7 @@ then
 fi
 
 mkdir $dossiercibleinst
-if cp ../vdr.sty $dossiercibleinst/
+if cp vdr.sty $dossiercibleinst/
 then
 	echo "Instalation terminée."
 fi

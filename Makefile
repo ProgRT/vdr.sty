@@ -9,4 +9,4 @@ clean:
 	rm -f *.log *.nav *.aux *.out *.snm *.toc *.ent
 
 install:
-	./install.sh
+	bash ./install.sh
