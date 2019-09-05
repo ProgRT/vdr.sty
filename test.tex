@@ -13,26 +13,10 @@
 \begin{document}
 \begin{frame}
 	\begin{tikzpicture}[
-			scale=.5,
-			every node/.style=transform shape,
-			hfknob/.style={fill=gray!70},
-			knobid/.style={
-				above=1cm,
-				align=center,
-				font=\scriptsize,
-				scale=0.8
-				}
 		]
 
-	\pic [name=VDR1, color=gray] {vdr};
-
-	\draw (VDR1-i) 
-	pic [hfknob, pic text=i] {aknob}
-	node [knobid] {FREQUENCE\\DE PERCUSSION};
-
-	\draw (VDR1-e) 
-	pic [hfknob, text=white] {aknob} 
-	node [knobid] {RATIO\\i/e};
+	\pic [] {aknob};
+		\pic [fill=green!70!black] at (2, 0) {aknob};
 
 	\end{tikzpicture}
 \end{frame}

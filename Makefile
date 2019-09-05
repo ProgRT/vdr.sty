@@ -1,9 +1,9 @@
 .PHONY: clean install test
 
-test: test.pdf
-
 test.pdf: test.tex vdr.sty
 	pdflatex test
+
+testmm.pdf: test.tex vdr.sty
 
 clean:
 	rm -f *.log *.nav *.aux *.out *.snm *.toc *.ent
