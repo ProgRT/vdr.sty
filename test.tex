@@ -1,22 +1,15 @@
 \documentclass[aspectratio=169]{beamer}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[french]{babel}
 \usepackage{vdr}
-
-
-\author{Nicolas Blais St-Laurent}
-\title{}
-\date{\today}
 
 \begin{document}
 \begin{frame}
-	\begin{tikzpicture}[
-		]
+	\centering
+	\begin{tikzpicture}[scale=0.2]
+		\pic [transform shape, name=F] {fp};
+		\pic [transform shape, name=N] at (15,10) [transform shape] {neb};
 
-	\pic [] {aknob};
-		\pic [fill=green!70!black] at (2, 0) {aknob};
+		\pic [transform shape, name=M] at(N-CR) {manifold};
+		\draw [transform shape] (M-BC) pic {bag};
 
 	\end{tikzpicture}
 \end{frame}

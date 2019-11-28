@@ -2,21 +2,28 @@
 \ProvidesPackage{vdr}[2019/07/19 Librairie pour dessiner le ventilateur VDR-4]
 
 \RequirePackage{tikz}
+\RequirePackage{amssymb}
+
 \usetikzlibrary{shapes}
 
 \tikzset{
 	aknob/.pic={
-		\begin{scope}[scale=0.4]
-		\draw [pic actions](0,0) circle [radius=1.35cm];
+		\begin{scope}[
+				scale=0.4,
+				every node/.style={
+					transform shape
+				}
+			]
+
+		\draw [pic actions] (0,0) circle [radius=1.35cm];
 		\draw (0,0) circle [radius=.65cm];
 
-			\fill [fill=black] (0,1.17) -- ++(-60:.35) -- ++(-180:.35) -- cycle;
-
+		\draw (90:1) node {$\blacktriangle$};
 		\foreach \h in {1,...,11}{
-			\draw (90 - \h*30:1) node [rotate=-30*\h, transform shape] {\h};
+			\draw (90 - \h*30:1) node [rotate=-30*\h] {\h};
 		}
 
-		\node [transform shape]at (0:0) {\huge \tikzpictext};
+		\node at (0:0) {\huge \tikzpictext};
 		\end{scope}
 	}
 }
@@ -583,6 +590,7 @@
 
 \end{scope}
 }
+
 }
 \tikzset{
 	darc/.style={
@@ -631,5 +639,95 @@
 		double=white,
 		double distance=5mm,
 		shorten <=-.2pt
+	}
+}
+
+\def\CHeight{10.5}
+\tikzset{
+	fp/.pic={
+		% Humidifier body
+		\draw [rounded corners, fill=black!4] (-6,-6) rectangle (6,6);
+
+		% Humidifying chamber
+		\draw (-5,6) 
+			to[rounded corners] (-5,\CHeight)
+			to[rounded corners] ++(10,0)
+			to (5,6)
+			to (-5,6);
+
+		\draw (-3.5, \CHeight) rectangle ++(22mm, 22mm);
+		\draw (3.5, \CHeight) rectangle ++(-22mm, 22mm);
+
+		% Connectors
+
+		\coordinate (-CL) at ([xshift=11mm]-3.5, \CHeight cm + 22mm);
+		\coordinate (-CR) at ([xshift=-11mm]3.5, \CHeight cm + 22mm);
+
+		% Buttons
+
+		\draw [fill=black!12, draw=black!50] (-4,4) circle[radius=8mm];
+		\draw [fill=black!12, draw=black!50] (4,4) circle[radius=8mm];
+		\draw [fill=black!12, draw=black!50] (4,1) circle[radius=8mm];
+
+		% Screen
+
+		\draw [rounded corners=1.5, black!60] (-1.8,2) rectangle ++(3.6,2.3);
+	}
+}
+
+\tikzset{
+	neb/.pic={
+		\draw (0,0) ++(-11mm,0) rectangle (11mm,18mm);
+		\draw (-28mm, 40mm) -- (-28mm, 18mm)
+		-- (28mm, 18mm) -- (28mm, 40mm) -- cycle;
+		%Couvercle
+		\draw [rounded corners=0.7mm](0,0) 
+		++(-40mm,0) rectangle ++(80mm,-5mm);
+		%Réservoir
+		\draw [even odd rule](-33mm,-5mm)
+		-- (-25mm,-85mm)
+		-- (-19mm, -85mm) 
+		-- (-19mm, -70mm) 
+		-- (19mm, -70mm) 
+		-- (19mm, -85mm)
+		-- (25mm,-85mm)
+		-- (33mm,-5mm)
+		-- cycle;
+		%Connecteur nébulisation
+		\draw (-2mm, -70mm) rectangle (2mm, -77mm);
+		\coordinate (-CL) at (-28mm,29mm);
+		\coordinate (-CR) at (28mm,29mm);
+		\coordinate (-CN) at (0,-77mm);
+	}
+}
+
+\tikzset{
+	manifold/.pic={
+		% Left connector
+		\draw (0,-14mm) rectangle (28mm,14mm);
+		\coordinate (-LC) at (0,0);
+
+		% Top connector
+		\draw (28mm, 14mm) rectangle (56mm, 42mm);
+		\coordinate (-TC) at (42mm,42mm);
+
+		% Center
+		\draw (28mm, -14mm) rectangle (56mm, 14mm);
+
+		% Right connector
+		\draw (56mm, -11mm) rectangle ++(22mm, 22mm);
+		\coordinate (-RC) at (78mm,0mm);
+
+		% Bottom connector
+		\draw (31mm, -14mm) rectangle ++(22mm, -22mm);
+		\coordinate (-BC) at (42mm,-36mm);
+	}
+}
+
+
+\tikzset{
+	bag/.pic={
+		\draw [looseness=0.7](-11mm,0) to [out=250, in=180] (0,-20cm) 
+		to [out=0, in=290](11mm,0);
 	}
 }
