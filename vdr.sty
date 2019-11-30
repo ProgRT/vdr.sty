@@ -724,10 +724,16 @@
 	}
 }
 
-
 \tikzset{
 	bag/.pic={
 		\draw [looseness=0.7](-11mm,0) to [out=250, in=180] (0,-20cm) 
 		to [out=0, in=290](11mm,0);
+	}
+}
+
+\tikzset{
+	failsafeValve/.pic={
+		\draw (-11mm,0mm) rectangle (11mm, -44mm);
+		\draw [dashed, gray] (-7.5mm,0mm) rectangle (7.5mm, -44mm);
 	}
 }
