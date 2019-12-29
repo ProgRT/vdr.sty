@@ -731,9 +731,18 @@
 	}
 }
 
+% Failsafe valve for the VDR-4 phasitron
+
 \tikzset{
 	failsafeValve/.pic={
-		\draw (-11mm,0mm) rectangle (11mm, -44mm);
-		\draw [dashed, gray] (-7.5mm,0mm) rectangle (7.5mm, -44mm);
+		% Diamètre ext. 22 mm
+		\draw (-11mm,0mm) rectangle (11mm, -60mm);
+		% Diamètre int. 15 mm
+		\draw [dashed, gray] (-7.5mm,0mm) rectangle (7.5mm, -60mm);
+		
+		% Diamètre ext. 30 mm
+		\draw (11mm, -16mm) rectangle ++(22mm, -28mm);	
+		% Diamètre int. 22 mm
+		\draw [dashed, gray] (11mm, -19mm) rectangle ++(22mm, -22mm);	
 	}
 }
