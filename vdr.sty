@@ -736,13 +736,21 @@
 \tikzset{
 	failsafeValve/.pic={
 		% Diamètre ext. 22 mm
-		\draw (-11mm,0mm) rectangle (11mm, -60mm);
+		\draw [fill=white] (-11mm,0mm) rectangle (11mm, -60mm);
 		% Diamètre int. 15 mm
-		\draw [dashed, gray] (-7.5mm,0mm) rectangle (7.5mm, -60mm);
+		%\draw [dashed, gray] (-7.5mm,0mm) rectangle (7.5mm, -60mm);
 		
 		% Diamètre ext. 30 mm
-		\draw (11mm, -16mm) rectangle ++(22mm, -28mm);	
+		\draw [fill=white] (11mm, -16mm) rectangle ++(22mm, -28mm);	
 		% Diamètre int. 22 mm
-		\draw [dashed, gray] (11mm, -19mm) rectangle ++(22mm, -22mm);	
+		%\draw [dashed, gray] (11mm, -19mm) rectangle ++(22mm, -22mm);	
+	}
+}
+
+\tikzset{
+	phasitronVDR/.pic={
+		\pic [scale=1.2, name=P] {phasitron};
+		\pic [name=F, yshift=12mm] at (P-A) {failsafeValve};
+		\pic [name=F, yshift=12mm, xscale=-1] at (P-E) {failsafeValve};
 	}
 }

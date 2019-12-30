@@ -1,4 +1,7 @@
-\documentclass[aspectratio=169]{beamer
+\documentclass[aspectratio=169]{beamer}
+\usepackage{vdr}
+\begin{document}
+\begin{frame}
 	\centering
 	\begin{tikzpicture}[
 			scale=0.5,
@@ -7,8 +10,7 @@
 			}
 			]
 
-		\pic [name=P, scale=1.2] {phasitron};
-		\pic [name=F] at (P-A) {failsafeValve};
+		\pic [] {phasitronVDR};
 
 	\end{tikzpicture}
 \end{frame}
