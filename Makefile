@@ -2,7 +2,7 @@
 
 test: test.pdf test2.pdf
 
-test.pdf: test.tex vdr.sty
+test.pdf: test.tex vdr.sty fig-circuit.tex
 	pdflatex test
 
 test2.pdf: test2.tex vdr.sty

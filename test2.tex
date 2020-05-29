@@ -3,15 +3,9 @@
 \begin{document}
 \begin{frame}
 	\centering
-	\begin{tikzpicture}[
-			scale=0.5,
-			every node/.style={
-				transform shape
-			}
-			]
-
-		\pic [] {phasitronVDR};
-
+	\begin{tikzpicture}[ ]
+		\pic [name=VDR] {vdr};
+		\foreach \x in {1,...,4} {\pic at (VDR-C\x) {connector};}
 	\end{tikzpicture}
 \end{frame}
 \end{document}

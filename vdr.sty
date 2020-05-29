@@ -31,9 +31,9 @@
 \tikzset{
 	screw/.pic={
 		\node [
-			transform shape, 
-			draw, 
-			circle, 
+			transform shape,
+			draw,
+			circle,
 			inner sep=0.02em] {+};
 	}
 }
@@ -41,14 +41,14 @@
 \tikzset{
 	master/.pic={
 		\node [
-			draw, 
-			shape=star, 
-			star point height=0.6mm, 
-			star points=30, 
+			draw,
+			shape=star,
+			star point height=0.6mm,
+			star points=30,
 			minimum width=1cm] {};
 		\node [
-			draw, 
-			shape=regular polygon, 
+			draw,
+			shape=regular polygon,
 			regular polygon sides=6,
 			minimum width=1.3cm] {};
 		}
@@ -58,8 +58,8 @@
 	pushbutton/.pic={
 		\draw circle [radius=1.8mm];
 		\node [
-			draw, 
-			shape=regular polygon, 
+			draw,
+			shape=regular polygon,
 			regular polygon sides=6,
 			minimum width=5mm] {};
 		}
@@ -69,8 +69,8 @@
 	toggle/.pic={
 		\draw circle [radius=1.8mm];
 		\node [
-			draw, 
-			shape=regular polygon, 
+			draw,
+			shape=regular polygon,
 			regular polygon sides=6,
 			minimum width=5mm] {};
 		\draw [fill=white] (0,0) -- (-1mm, 0) -- (-1.5mm, -5mm) -- (1.5mm, -5mm) -- (1mm, 0) -- (0, 0);
@@ -80,8 +80,8 @@
 \tikzset{
 	connector/.pic={
 		\node [
-			draw, 
-			shape=regular polygon, 
+			draw,
+			shape=regular polygon,
 			regular polygon sides=6,
 			minimum width=0.6cm] {};
 		\draw (0,0) circle [radius=1.9mm];
@@ -118,22 +118,22 @@
 		\path (-SNO) ++(0.5 * \panelWidth - \sDist, 0) coordinate (-SN);
 		\path (-SSO) ++(0.5 * \panelWidth - \sDist, 0) coordinate (-SS);
 
-		\path (-NO) ++(\nDist, -\nDist) coordinate (-F) 
+		\path (-NO) ++(\nDist, -\nDist) coordinate (-F)
 		foreach \x in {I, E, O, D} {
 			++(\nDist, 0) coordinate (-\x)
 		}
 			++(\nDist, 0.5) coordinate (-C)
 		;
 
-		\path (-SO) ++(\nDist, \nDist) coordinate (-A); 
-		\path (-A) ++(\nDist, 0) coordinate (-M); 
-		\path (-M) ++(\nDist, 3mm) coordinate (-N); 
-		\path (-N) ++(0.35 * \nDist, -6mm) coordinate (-P); 
-		\path (-N) ++(-0.35 * \nDist, -6mm) coordinate (-R); 
-		\path (-A) ++(3 * \nDist, 0) coordinate (-i); 
-		\path (-i) ++(\nDist, 0) coordinate (-e); 
+		\path (-SO) ++(\nDist, \nDist) coordinate (-A);
+		\path (-A) ++(\nDist, 0) coordinate (-M);
+		\path (-M) ++(\nDist, 3mm) coordinate (-N);
+		\path (-N) ++(0.35 * \nDist, -6mm) coordinate (-P);
+		\path (-N) ++(-0.35 * \nDist, -6mm) coordinate (-R);
+		\path (-A) ++(3 * \nDist, 0) coordinate (-i);
+		\path (-i) ++(\nDist, 0) coordinate (-e);
 
-		\path (-C) ++(0, -\nDist) coordinate (-C1) 
+		\path (-C) ++(0, -\nDist) coordinate (-C1)
 		foreach \x in {2, 3, 4} {
 			++(0, -\cSpace) coordinate (-C\x)
 		};
@@ -228,8 +228,8 @@
 
 \tikzset{phasitron/.pic={
 \begin{scope}[y=0.80pt, x=0.80pt, shift={(-131.65625,-2.50001)},every node/.style=red]
-  \draw (132.0342,134.5973)-- (132.0342,101.2173) 
-	coordinate (-Pt) 
+  \draw (132.0342,134.5973)-- (132.0342,101.2173)
+	coordinate (-Pt)
 	-- (132.0342,68.2862)  -- (149.9645,68.2862) -- (149.9645,101.2173) --
     (149.9645,101.6426) -- (149.9645,134.5973) -- cycle;
   \draw (149.9645,127.4867) --
@@ -267,11 +267,11 @@
   \draw (172.1672,64.9932) rectangle (181.9336,61.8462);
 
   \draw
-    (169.8210,61.8370) -- 
-		(169.8210,58.4116) -- 
+    (169.8210,61.8370) --
+		(169.8210,58.4116) --
 		(170.6736,56.9469) --
-    %(176.3670,56.9469) -- 
-		%(177.5222,56.9469) -- 
+    %(176.3670,56.9469) --
+		%(177.5222,56.9469) --
 		(183.2156,56.9469) coordinate [midway] (-M) --
     (184.0682,58.4116) -- (184.0682,61.8370) -- (177.5222,61.8370) --
     (176.3670,61.8370) -- cycle;
@@ -280,11 +280,11 @@
   \draw[cm={{0.0,1.0,1.0,0.0,(0.0,0.0)}}]
     (96.8101,495.9163) rectangle (106.5765,499.0633);
   \draw
-    (499.0725,94.4639) -- 
-		(502.4980,94.4639) -- 
+    (499.0725,94.4639) --
+		(502.4980,94.4639) --
 		(503.9626,95.3165) --
-    %(503.9626,101.0099) -- 
-		%(503.9626,102.1651) -- 
+    %(503.9626,101.0099) --
+		%(503.9626,102.1651) --
 		(503.9626,107.8585) coordinate [midway] (-S) --
     (502.4980,108.7112) -- (499.0725,108.7112) -- (499.0725,102.1651) --
     (499.0725,101.0099) -- cycle;
@@ -292,8 +292,8 @@
   \draw %Expiration
     (222.2656,59.9707) -- (222.2656,15.6530) -- (225.2093,15.6530) --
     (225.2093,11.6134) -- (222.2656,11.6134) -- (222.2656,9.6527) --
-    (225.2093,5.4240) -- 
-		(240.9589,5.4240) -- 
+    (225.2093,5.4240) --
+		(240.9589,5.4240) --
 		(247.5768,5.4240)  coordinate [midway] (-E) --
     (263.3049,5.4240) -- (266.2486,9.6527) -- (266.2486,11.6134) --
     (263.3049,11.6134) -- (263.3049,15.6530) -- (266.2486,15.6530) --
@@ -303,14 +303,14 @@
   \draw %Appel d'air
     (389.1975,57.4430) -- (389.1975,13.1253) -- (392.1411,13.1253) --
     (392.1411,9.0857) -- (389.1975,9.0857) -- (389.1975,7.1249) --
-    (392.1411,2.8963) -- 
-		(407.8908,2.8963) -- 
+    (392.1411,2.8963) --
+		(407.8908,2.8963) --
 		(414.5086,2.8963) coordinate [midway] (-A) --
-    (430.2367,2.8963) -- 
+    (430.2367,2.8963) --
 		(433.1804,7.1249) -- (433.1804,9.0857) --
     (430.2367,9.0857) -- (430.2367,13.1253) -- (433.1804,13.1253) --
     (433.1804,57.4430) -- (414.5086,57.4430) -- (407.8908,57.4430) -- cycle;
-  \draw 
+  \draw
 	(392.1411,13.1253) rectangle (430.2367,9.0857);
 \end{scope}}
 }
@@ -318,8 +318,8 @@
 \tikzset{
 	venturi-avance/.pic={
 		\begin{scope}[
-				y=0.80pt, 
-				x=0.80pt, 
+				y=0.80pt,
+				x=0.80pt,
 				fill=white
 				]
 
@@ -348,7 +348,7 @@
     (314.3445,131.0225) -- (318.3230,131.0225) -- cycle;
 
 		% Joint étanchéité
-  \path[draw] 
+  \path[draw]
 			(110.6047,163.2342) %node [red] {.}
 			.. controls (109.3265,163.9412) and (108.8612,165.5497) .. (109.5645,166.8299) % node [blue] {.}
 			.. controls (110.2679,168.1102) and (111.8750,168.5801) .. (113.1572,167.8805) % node [green] {.}
@@ -356,7 +356,7 @@
 			.. controls (113.5223,163.0066) and (111.9180,162.5274) .. (110.6317,163.2196);
 
 		% Joint étanchéité
-  %\path[] 
+  %\path[]
 	%		(109.5645,166.8299) node [red] {.} --
 	%		 (114.2182,164.2909) node [purple] {.} node [midway] {A};
 
@@ -417,10 +417,10 @@
 \tikzset{
 	venturi-recule/.pic={
 		\begin{scope}[
-				draw, 
-				fill=white, 
-				y=0.80pt, 
-				x=0.80pt, 
+				draw,
+				fill=white,
+				y=0.80pt,
+				x=0.80pt,
 				opacity=1]
 
   \path[draw, fill] (307.9801,180.3694) --
@@ -507,9 +507,9 @@
 \tikzset{
 	phasitron-coupe/.pic={
 \begin{scope}[
-		y=0.80pt, 
-		x=0.80pt, 
-		yscale=1.000000, 
+		y=0.80pt,
+		x=0.80pt,
+		yscale=1.000000,
 		xscale=1.000000,
 		%yshift=-4.05cm,
 		%xshift=-6.3cm,
@@ -520,11 +520,11 @@
 
 	\path (28.5455,169.2432) -- (28.5455,118.2586) node [midway] (-Pt) {};
 	\path (127.6007,42.7405) -- (165.4593,42.7406) node [midway] (-E) {};
-	\path (305.0632,40.0755) -- (342.9219,40.0755) node [midway] (-A) {}; 
+	\path (305.0632,40.0755) -- (342.9219,40.0755) node [midway] (-A) {};
 	\path (420.6816,145.9054) -- (420.6815,142.3686) node [midway] (-S) {};
 
-  \path[pic actions] 
-	(364.7404,207.4257) -- (354.4289,190.6384) 
+  \path[pic actions]
+	(364.7404,207.4257) -- (354.4289,190.6384)
 	.. controls (354.4292,190.5471) and (354.4286,190.4557) .. (354.4289,190.3644) --
     (187.1534,190.3644) .. controls (185.3773,189.6993) and (185.0234,188.6749) ..
     (184.6876,187.6496) -- (184.6876,187.7243) -- (110.6639,187.6496) --
@@ -583,7 +583,7 @@
     (124.4375,49.2662) -- (121.0252,49.2662) -- (121.0252,47.1989) --
 		(124.4375,42.7405) -- (127.6007,42.7405) -- (127.6007,42.7654) --
     (127.6007,105.9794) -- (127.6007,112.3806) -- (118.2108,112.3806) --
-    (112.3327,118.2586) -- (102.3450,118.2586) -- 
+    (112.3327,118.2586) -- (102.3450,118.2586) --
 		cycle
 
 		;
@@ -594,8 +594,8 @@
 }
 \tikzset{
 	darc/.style={
-		start angle=180, 
-		end angle=0, 
+		start angle=180,
+		end angle=0,
 		radius=0.2
 	},
 	obturateur/.pic={
@@ -609,7 +609,7 @@
 	},
 	obturateur-bas/.pic={
 		\draw [diaphragme]
-		(-1.75,0) -- ++(0.5,0) 
+		(-1.75,0) -- ++(0.5,0)
 		arc [darc] -- (0,0)
 		-- (0.85,0) arc [darc] -- (1.75,0);
 		\pic {obturateur};
@@ -649,7 +649,7 @@
 		\draw [rounded corners, fill=black!4] (-6,-6) rectangle (6,6);
 
 		% Humidifying chamber
-		\draw (-5,6) 
+		\draw (-5,6)
 			to[rounded corners] (-5,\CHeight)
 			to[rounded corners] ++(10,0)
 			to (5,6)
@@ -681,14 +681,14 @@
 		\draw (-28mm, 40mm) -- (-28mm, 18mm)
 		-- (28mm, 18mm) -- (28mm, 40mm) -- cycle;
 		%Couvercle
-		\draw [rounded corners=0.7mm](0,0) 
+		\draw [rounded corners=0.7mm](0,0)
 		++(-40mm,0) rectangle ++(80mm,-5mm);
 		%Réservoir
 		\draw [even odd rule](-33mm,-5mm)
 		-- (-25mm,-85mm)
-		-- (-19mm, -85mm) 
-		-- (-19mm, -70mm) 
-		-- (19mm, -70mm) 
+		-- (-19mm, -85mm)
+		-- (-19mm, -70mm)
+		-- (19mm, -70mm)
 		-- (19mm, -85mm)
 		-- (25mm,-85mm)
 		-- (33mm,-5mm)
@@ -726,7 +726,7 @@
 
 \tikzset{
 	bag/.pic={
-		\draw [looseness=0.7](-11mm,0) to [out=250, in=180] (0,-20cm) 
+		\draw [looseness=0.7](-11mm,0) to [out=250, in=180] (0,-20cm)
 		to [out=0, in=290](11mm,0);
 	}
 }
@@ -737,20 +737,27 @@
 	failsafeValve/.pic={
 		% Diamètre ext. 22 mm
 		\draw [fill=white] (-11mm,0mm) rectangle (11mm, -60mm);
+		\coordinate (-CB) at (0mm,-60mm);
+
 		% Diamètre int. 15 mm
-		%\draw [dashed, gray] (-7.5mm,0mm) rectangle (7.5mm, -60mm);
-		
+		% \draw [dashed, gray] (-7.5mm,0mm) rectangle (7.5mm, -60mm);
+
 		% Diamètre ext. 30 mm
-		\draw [fill=white] (11mm, -16mm) rectangle ++(22mm, -28mm);	
+		\draw [fill=white] (11mm, -16mm) rectangle ++(22mm, -28mm);
+		\coordinate (-CS) at (33mm, -30mm);
+		\coordinate (-V) at (22mm,-30mm);
 		% Diamètre int. 22 mm
-		%\draw [dashed, gray] (11mm, -19mm) rectangle ++(22mm, -22mm);	
+		%\draw [dashed, gray] (11mm, -19mm) rectangle ++(22mm, -22mm);
 	}
 }
 
 \tikzset{
 	phasitronVDR/.pic={
-		\pic [scale=1.2, name=P] {phasitron};
-		\pic [name=F, yshift=12mm] at (P-A) {failsafeValve};
-		\pic [name=F, yshift=12mm, xscale=-1] at (P-E) {failsafeValve};
+		\begin{scope}[name prefix=]
+			\pic [scale=1.2] (PS)  {phasitron};
+			\pic [name=F, yshift=12mm] at (PS-A) {failsafeValve};
+			\pic [name=F, yshift=12mm, xscale=-1] at (PS-E) {failsafeValve};
+			%\coordinate (-A) at (PS-A);
+		\end{scope}
 	}
 }

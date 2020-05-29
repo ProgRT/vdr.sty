@@ -4,32 +4,6 @@
 \begin{document}
 \begin{frame}
 	\centering
-	\begin{tikzpicture}[
-			scale=0.15,
-			every node/.style={
-				transform shape
-			}
-			]
-
-		\pic [name=F] {fp};
-		\pic [name=N] at (15,10) {neb};
-		\pic [scale=1.2, name=P] at (0, 25) {phasitron};
-
-		\pic [name=M] at(N-CR) {manifold};
-		\pic  at (M-BC) {bag};
-
-		\begin{scope}[
-			every path/.style={
-				double distance=4mm,
-				looseness=1.7
-				}
-			]
-
-			\draw (P-E) to [out=270, in=180] (23,20) to [out=0, in=0] (M-RC);
-			\draw [double=black!13](N-CL) to [out=180, in=90] (F-CR);
-			\draw [double=black!13](F-CL) to [out=90, in=270] (P-A);
-		\end{scope}
-
-	\end{tikzpicture}
+	\input{fig-circuit.tex}
 \end{frame}
 \end{document}
