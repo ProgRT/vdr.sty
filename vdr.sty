@@ -19,6 +19,7 @@
 		\draw (0,0) circle [radius=.65cm];
 
 		\draw (90:1) node {$\blacktriangle$};
+		
 		\foreach \h in {1,...,11}{
 			\draw (90 - \h*30:1) node [rotate=-30*\h] {\h};
 		}
@@ -51,6 +52,13 @@
 			shape=regular polygon,
 			regular polygon sides=6,
 			minimum width=1.3cm] {};
+		\draw [scale=0.50, font=\scriptsize](0,0.6) node (ONH) {ON};
+		\draw [rotate=180, scale=0.50, font=\scriptsize](0,0.6)  node (ONB){ON};
+		\draw [rotate=-90, scale=0.57, font=\scriptsize](0,0.45) node {OFF};
+		\draw [rotate=90, scale=0.57, font=\scriptsize](0,0.45) node {OFF};
+		\draw (0,0.4) node {.};
+		\draw (0,-0.4) node {.};
+		\draw (ONH) -- (ONB);
 		}
 }
 
@@ -128,8 +136,8 @@
 		\path (-SO) ++(\nDist, \nDist) coordinate (-A);
 		\path (-A) ++(\nDist, 0) coordinate (-M);
 		\path (-M) ++(\nDist, 3mm) coordinate (-N);
-		\path (-N) ++(0.35 * \nDist, -6mm) coordinate (-P);
-		\path (-N) ++(-0.35 * \nDist, -6mm) coordinate (-R);
+		\path (-N) ++(0.35 * \nDist, -11mm) coordinate (-P);
+		\path (-N) ++(-0.35 * \nDist, -11mm) coordinate (-R);
 		\path (-A) ++(3 * \nDist, 0) coordinate (-i);
 		\path (-i) ++(\nDist, 0) coordinate (-e);
 
@@ -149,7 +157,7 @@
 		}
 
 		\foreach \x in {F, I, E, O, D, C, A, i, e} {
-			\draw (-\x) pic [transform shape] {aknob};
+			\draw (-\x) pic [transform shape, pic text=\x] {aknob};
 		}
 
 		\draw (-M) pic [transform shape] {master};
@@ -159,6 +167,48 @@
 		}
 
 		\draw (-N) pic [transform shape] {toggle};
+	}
+}
+
+\tikzset{
+	monitron/.pic={
+
+		%%%%%%%%%%%%%%
+		% Dimensions %
+		%%%%%%%%%%%%%%
+
+		\def\panelWidth{14cm}
+		\def\panelHeight{7cm}
+		\def\sDist{3mm}
+		\def\nDist{20mm}
+		\def\cSpace{7.5mm}
+
+		%%%%%%%%%%%%%%%
+		% Coordinates %
+		%%%%%%%%%%%%%%%
+
+		\coordinate (-NO) at (0,0);
+		\coordinate (-NE) at (\panelWidth,0);
+		\coordinate (-SE) at (\panelWidth, -\panelHeight);
+		\coordinate (-SO) at (0,-\panelHeight);
+
+		\path (-NO) ++(\sDist, -\sDist) coordinate (-SNO);
+		\path (-NE) ++(-\sDist, -\sDist) coordinate (-SNE);
+		\path (-SO) ++(\sDist, \sDist) coordinate (-SSO);
+		\path (-SE) ++(-\sDist, \sDist) coordinate (-SSE);
+		\path (-SNO) ++(0.5 * \panelWidth - \sDist, 0) coordinate (-SN);
+		\path (-SSO) ++(0.5 * \panelWidth - \sDist, 0) coordinate (-SS);
+
+%%%%%%%%%%%
+% Drawing %
+%%%%%%%%%%%
+
+		\draw [double distance=1] (-NO) rectangle (-SE);
+
+		\foreach \x in {SNO, SNE, SSO, SSE, SN, SS} {
+			\draw (-\x) pic [transform shape, scale=0.5] {screw};
+		}
+
 	}
 }
 
