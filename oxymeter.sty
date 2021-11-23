@@ -1,0 +1,43 @@
+\tikzset{
+	rubber/.style={
+		fill=black!8
+	},
+	plast/.style={
+		fill=white
+	},
+	coiled/.style={
+		decorate,
+		decoration={
+			coil,
+			segment length=3mm,
+			amplitude=3mm,
+			pre length=3mm,
+			post length=3mm
+		}
+	},
+	oxycell/.pic={
+		% Main rubber body
+		\draw[rubber] (-25mm,-15mm) rectangle ++(50mm, 30mm);
+
+		% Oxygen cell connector
+		\draw[rubber] (-15mm,12mm) rectangle ++(30mm,5mm);
+		\coordinate (-CELL) at(0,20mm);
+
+		\begin{scope}[yshift=17mm]
+			% Oxygen cell
+			\draw [plast](-15mm,0) rectangle ++(30mm,25mm)
+			node[transform shape, midway, font=\huge\sf] {Oxygen};
+			\draw [plast, rounded corners=0.7mm](-17mm,25mm) rectangle ++(34mm,6mm);
+			\draw [plast] (-15mm,31mm) 
+			-- ++(0mm,1mm) 
+			-- ++(12.5mm, 2mm)
+			-- ++(5mm,0) -- ++(12mm,-2mm) 
+			-- ++(0,-1mm) 
+			-- cycle;
+
+			% Connector
+			\draw [fill=black!55] (-2.5mm,34mm) rectangle ++(5mm,4mm);
+			\coordinate (-Connector) at (0,38mm);
+		\end{scope}
+	},
+}

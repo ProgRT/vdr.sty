@@ -1,0 +1,20 @@
+\documentclass[tikz, border=1cm]{standalone}
+\usetikzlibrary{decorations.pathmorphing}
+
+\usepackage{
+	vdr,
+	oxymeter
+}
+
+\begin{document}
+\begin{tikzpicture}
+
+	\draw[help lines, opacity=0.5] (-10cm,-10cm) grid (10cm,10cm);
+	\draw (-10,0) -- (10,0);
+	\draw (0,-10) -- (0,10);
+
+	\pic (O) {oxycell};
+	\draw [ultra thick, out=90, in=180, coiled] (O-Connector) to ++(10cm,3cm);
+
+\end{tikzpicture}
+\end{document}

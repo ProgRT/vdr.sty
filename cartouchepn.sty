@@ -1,0 +1,49 @@
+\tikzset{
+	darc/.style={
+		start angle=180,
+		end angle=0,
+		radius=0.2
+	},
+	obturateur/.pic={
+	\draw [ultra thick] (0,0) -- (0, 2.0) ;
+	\fill (2.7mm,2.0) arc [start angle=0, end angle=180, radius=2.7mm];
+	},
+	obturateur-haut/.pic={
+		\pic at (0,.45) {obturateur};
+		\draw [diaphragme, bend left=15] (-1.75,0) to (0,.45);
+		\draw [diaphragme, bend right=15] (1.75,0) to (0,.45);
+	},
+	obturateur-bas/.pic={
+		\draw [diaphragme]
+		(-1.75,0) -- ++(0.5,0)
+		arc [darc] -- (0,0)
+		-- (0.85,0) arc [darc] -- (1.75,0);
+		\pic {obturateur};
+	},
+	cartouche/.pic={
+		\draw [ rounded corners=1mm ]
+		(1.75, -.5)
+		-- ++(0,1)
+		-- ++(-.75,.75)
+		-- ++(0,1.5)
+		-- ++(-2,0)
+		-- ++(0,-1.5)
+		-- ++(-.75,-.75)
+		-- ++(0, -1)
+		-- cycle;
+
+		\draw [connector] (0, -.5) |- ++(.7,-.7) coordinate (S);
+
+		\draw [fill=white] (-.75,1.5) rectangle ++(1.5,1);
+		\draw [connector] (0, 2.5) -- ++(0, .75) coordinate (I);
+		\draw [connector] (.75, 2.1) -- ++(.75, 0) coordinate (O);
+	},
+	diaphragme/.style={
+		ultra thick
+	},
+	connector/.style={
+		double=white,
+		double distance=5mm,
+		shorten <=-.2pt
+	}
+}

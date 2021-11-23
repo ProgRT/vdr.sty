@@ -1,0 +1,101 @@
+\RequirePackage{tikz}
+\usetikzlibrary{matrix}
+
+\tikzset{
+	blocklabel/.style={
+		fill=black,
+		text=white,
+		rounded corners,
+	},
+	monitronbutton/.style={
+		draw,
+		minimum width=1.5cm,
+		minimum height=1.2cm,
+	},
+	buttonlabel/.style={
+		draw=none,
+		minimum height=0,
+		font=\scriptsize
+	},
+	buttonmatrix/.style={
+		matrix of nodes,
+		ampersand replacement=\&,
+		draw,
+		row sep=3mm,
+		column sep=3mm,
+		rounded corners,
+		nodes={
+			monitronbutton
+		}
+	},
+	alarmblock/.pic={
+		\matrix [buttonmatrix] (M1) {
+			$\blacktriangle$           \& Set \& Reset \& $\blacktriangle$ \\
+			$\blacktriangledown$       \&     \&       \& $\blacktriangledown$\\[-2mm]
+			\node [buttonlabel] {Low alarm}; \&     \&       \& \node
+			[buttonlabel] {Low alarm};\\
+		};
+		\node [blocklabel] at(M1.south) {ALARM};
+	},
+	displayblock/.pic={
+		\matrix [buttonmatrix] (M1){
+			Scale \& Sweep \&  \node[draw=none] {}; \& Freeze \\
+			Disp. \&       \&  \& Print \\
+		};
+		\node [blocklabel] at(M1.south) {DISPLAY};
+	}
+}
+
+\tikzset{
+	monitron/.pic={
+
+		%%%%%%%%%%%%%%
+		% Dimensions %
+		%%%%%%%%%%%%%%
+
+		\def\panelWidth{14cm}
+		\def\panelHeight{7cm}
+		\def\sDist{3mm}
+		\def\nDist{20mm}
+		\def\cSpace{7.5mm}
+		\def\bWidth{0.4 * \panelWidth}
+		\def\bHeight{0.4 * \panelHeight}
+
+		%%%%%%%%%%%%%%%
+		% Coordinates %
+		%%%%%%%%%%%%%%%
+
+		\coordinate (-NO) at (0,0);
+		\coordinate (-NE) at (\panelWidth,0);
+		\coordinate (-SE) at (\panelWidth, -\panelHeight);
+		\coordinate (-SO) at (0,-\panelHeight);
+
+		\path (-NO) ++(\sDist, -\sDist) coordinate (-SNO);
+		\path (-NE) ++(-\sDist, -\sDist) coordinate (-SNE);
+		\path (-SO) ++(\sDist, \sDist) coordinate (-SSO);
+		\path (-SE) ++(-\sDist, \sDist) coordinate (-SSE);
+		\path (-SNO) ++(0.5 * \panelWidth - \sDist, 0) coordinate (-SN);
+		\path (-SSO) ++(0.5 * \panelWidth - \sDist, 0) coordinate (-SS);
+
+%%%%%%%%%%%
+% Drawing %
+%%%%%%%%%%%
+
+		\draw [double distance=1] (-NO) rectangle (-SE);
+
+		\foreach \x in {SNO, SNE, SSO, SSE, SN, SS} {
+			\draw (-\x) pic [transform shape, scale=0.5] {screw};
+		}
+
+	\node [matrix, draw, ampersand replacement=\&, nodes={draw,
+	minimum height=1cm}] (B1) at (\panelWidth*0.75,-0.25*\panelHeight) {
+		\node {a}; \& \node {B} ;\\
+			\node {C}; \& \node {D}; \\
+		};
+		\node [cblabel](L1) at (B1.south) {Alarms};
+
+		\node [cblock] (B2) at (\panelWidth*0.75,-0.75*\panelHeight){};
+		\node [cblabel](L1) at (B2.south) {Settings};
+
+	}
+}

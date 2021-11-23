@@ -1,0 +1,58 @@
+\tikzset{
+	box/.style={
+		fill=black!70,
+		rounded corners
+	},
+	frame/.style={
+		fill=black!65,
+		draw=black,
+		even odd rule
+	},
+	screen/.style={
+		draw,
+		minimum width=2.5cm,
+		minimum height=1.5cm,
+		rounded corners,
+		fill=black!0
+	},
+	grad/.style={
+		xshift=-0.5em,
+		font=\tiny \ttfamily,
+		white,
+		inner sep=0.5mm
+	},
+	plabel/.style={
+		font=\tiny \ttfamily
+	},
+	pScale/.style={
+			dash pattern=on 1mm off 0.3mm,
+			line width=2mm,
+			draw = white
+		},
+	multimeter/.pic={
+		\def\dxshift{5mm}
+		\def\ScrenWidth{2.5}
+		\def\ScreenHeight{1.5}
+
+		%\coordinate (frame) at (0,0);
+		\node [screen] (screen) at (0,0) {};
+
+		\path [frame] (0,0) circle [radius=2.3cm] (0,0) circle [radius=2cm];
+		\path [box] (0,0) circle [radius=2cm] (-0.5 * \ScrenWidth,-0.5 * \ScreenHeight) rectangle  ++(\ScrenWidth, \ScreenHeight);
+
+		\node [above, white] at (screen.north) {\tiny cmH2O/hPa};
+
+
+		\begin{scope}[shift={(screen)}]
+
+			\node (Pmoy) at  (-0.5,0) {};
+			\node (Pmi) at (-0.5, \dxshift) {};
+			\node (Pme) at (-0.5, -\dxshift) {};
+			\node (Ampl) at (1.3 *\dxshift, \dxshift)  {};
+			\node (Fperc) at (1.3 *\dxshift, 0)  {};
+
+			\node [plabel] (aip) at (0.5\dxshift, \dxshift) {AIP};
+			\node [plabel] (aep) at (0.5\dxshift, -\dxshift) {AEP};
+		\end{scope}
+	}
+}
